@@ -69,13 +69,15 @@ function placeInTable(y, x) {
   // make a div and insert into correct table cell
   const piece = document.createElement('div');
   piece.classList.add('piece');
+  piece.classList.add(`player${currPlayer}`);
   document.getElementById(`${y}-${x}`).appendChild(piece);
 }
 
 /** endGame: announce game end */
 
 function endGame(msg) {
-  // TODO: pop up alert message
+  // pop up alert message
+  window.alert("Game over.");
 }
 
 /** handleClick: handle click of column top to play piece */
@@ -101,9 +103,16 @@ function handleClick(evt) {
 
   // check for tie
   // TODO: check if all cells in board are filled; if so call, call endGame
+  if (checkForTie()) {
+    return endGame('Tie. No players win.');
+  }
 
   // switch players
   // TODO: switch currPlayer 1 <-> 2
+}
+
+function checkForTie() {
+  return board.every(row => row.every(cell => cell !== null));
 }
 
 /** checkForWin: check board cell-by-cell for "does a win start here?" */
