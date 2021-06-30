@@ -14,16 +14,18 @@
   width: 80%;
   height: 80%;
   border-radius: 50%;
+  border-color: black;
+  display: inline-block;
 }
 
 /* make pieces red/blue,  depending on player 1/2 piece */
 
 .player1 {
-  color: red;
+  background-color: red;
 }
 
 .player2 {
-  color: blue;
+  background-color: blue;
 }
 
 /* column-top is table row of clickable areas for each column */
