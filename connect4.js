@@ -115,6 +115,8 @@ function handleClick(evt) {
   currPlayer = (currPlayer === 1)? 2: 1;
 }
 
+/** checkForTie: check that all cells have a piece in them */
+
 function checkForTie() {
   return board.every(row => row.every(cell => cell !== null));
 }
