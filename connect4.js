@@ -5,11 +5,11 @@
  * board fills (tie)
  */
 
-var WIDTH = 7;
-var HEIGHT = 6;
+const WIDTH = 7;
+const HEIGHT = 6;
 
-var currPlayer = 1; // active player: 1 or 2
-var board = []; // array of rows, each row is array of cells  (board[y][x])
+let currPlayer = 1; // active player: 1 or 2
+const board = []; // array of rows, each row is array of cells  (board[y][x])
 
 /** makeBoard: create in-JS board structure:
  *    board = array of rows, each row is array of cells  (board[y][x])
@@ -29,23 +29,23 @@ function makeHtmlBoard() {
   const htmlBoard = document.getElementById('board');
 
   // create column top variable
-  var top = document.createElement("tr");
+  const top = document.createElement("tr");
   top.setAttribute("id", "column-top");
   top.addEventListener("click", handleClick);
 
   // create top row element and append to htmlBoard
   // these are empty spaces above the grid where we drop the coins
   for (var x = 0; x < WIDTH; x++) {
-    var headCell = document.createElement("td");
+    const headCell = document.createElement("td");
     headCell.setAttribute("id", x);
     top.append(headCell);
   }
   htmlBoard.append(top);
 
   // create grid row and td elements
-  for (var y = 0; y < HEIGHT; y++) {
+  for (let y = 0; y < HEIGHT; y++) {
     const row = document.createElement("tr");
-    for (var x = 0; x < WIDTH; x++) {
+    for (let x = 0; x < WIDTH; x++) {
       const cell = document.createElement("td");
       cell.setAttribute("id", `${y}-${x}`);
       row.append(cell);
@@ -95,7 +95,7 @@ function handleClick(evt) {
 
   // update in-memory board
   board[y][x] = currPlayer;
-  
+
   // place piece in board and add to HTML table
   placeInTable(y, x);
 
@@ -138,12 +138,12 @@ function checkForWin() {
   }
 
   // check if 4 pieces of the same color are connected for every x and y
-  for (var y = 0; y < HEIGHT; y++) {
-    for (var x = 0; x < WIDTH; x++) {
-      var horiz =   [[y, x], [y, x + 1],     [y, x + 2],     [y, x + 3]];
-      var vert =    [[y, x], [y + 1, x],     [y + 2, x],     [y + 3, x]];
-      var diagDR =  [[y, x], [y + 1, x + 1], [y + 2, x + 2], [y + 3, x + 3]];
-      var diagDL =  [[y, x], [y + 1, x - 1], [y + 2, x - 2], [y + 3, x - 3]];
+  for (let y = 0; y < HEIGHT; y++) {
+    for (let x = 0; x < WIDTH; x++) {
+      const horiz =   [[y, x], [y, x + 1],     [y, x + 2],     [y, x + 3]];
+      const vert =    [[y, x], [y + 1, x],     [y + 2, x],     [y + 3, x]];
+      const diagDR =  [[y, x], [y + 1, x + 1], [y + 2, x + 2], [y + 3, x + 3]];
+      const diagDL =  [[y, x], [y + 1, x - 1], [y + 2, x - 2], [y + 3, x - 3]];
 
       if (_win(horiz) || _win(vert) || _win(diagDR) || _win(diagDL)) {
         return true;
