@@ -90,8 +90,9 @@ function endGame(msg) {
   // reset board
   emptyPieces();
 
-  // remove tracker
-  document.getElementById('tracker').remove();
+  // remove tracker if present
+  const tracker = document.getElementById('tracker');
+  if (tracker !== null) tracker.remove();
 }
 
 /** handleClick: handle click of column top to play piece */
