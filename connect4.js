@@ -89,6 +89,9 @@ function endGame(msg) {
 
   // reset board
   emptyPieces();
+
+  // remove tracker
+  document.getElementById('tracker').remove();
 }
 
 /** handleClick: handle click of column top to play piece */
@@ -111,6 +114,7 @@ function handleClick(evt) {
   // place piece in board and add to HTML table
   placeInTable(y, x);
 
+
   // check for win
   if (checkForWin()) {
     // due to the timeout, currPlayer will have switched already
@@ -128,8 +132,15 @@ function handleClick(evt) {
   }
 
   // switch players
+  const tracker = document.getElementById('tracker');
+  tracker.lastChild.classList.toggle(`player${currPlayer}`);
+
   // switch currPlayer 1 <-> 2
   currPlayer = (currPlayer === 1)? 2: 1;
+
+  // update player tracker
+  tracker.firstChild.innerText = `Player ${currPlayer}`;
+  tracker.lastChild.classList.toggle(`player${currPlayer}`);
 }
 
 /** checkForTie: check that all cells have a piece in them */
@@ -183,6 +194,7 @@ function setupMenu() {
   startButton.addEventListener('click', (evt) => {
     start = true;
     evt.target.remove();
+    displayCurrentPlayer();
   });
 
   document.getElementById('menu').appendChild(startButton);
@@ -190,8 +202,29 @@ function setupMenu() {
 
 // delete all pieces from the board
 function emptyPieces() {
-  document.querySelectorAll('.piece').forEach(piece => piece.remove());
+  document.querySelectorAll('#board .piece').forEach(piece => piece.remove());
   makeBoard();
+}
+
+// make player turn tracker
+function displayCurrentPlayer() {
+  const tracker = document.createElement('div');
+  tracker.id = 'tracker';
+  
+  // display player name
+  const displayName = document.createElement('text');
+  displayName.innerText = 'Player 1';
+  displayName.id = 'current-player';
+
+  // display player piece with color
+  const piece = document.createElement('div');
+  piece.id = 'display-piece';
+  piece.classList.add('piece', 'player1');
+
+  tracker.appendChild(displayName);
+  tracker.appendChild(piece);
+
+  document.getElementById('menu').appendChild(tracker);
 }
 
 
