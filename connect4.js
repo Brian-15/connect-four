@@ -57,6 +57,7 @@ function makeHtmlBoard() {
 /** findSpotForCol: given column x, return top empty y (null if filled) */
 
 function findSpotForCol(x) {
+  if (x < 0 || x >= WIDTH) throw new Error('x coordinate out of bounds');
 
   for (let y = HEIGHT - 1; y >= 0; y--) {
     if (board[y][x] === null) return y;
