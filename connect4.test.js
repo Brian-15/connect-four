@@ -63,6 +63,7 @@ describe('endGame(msg)', () => {
     it('should throw an alert message', () => {
         // testing alerts with help of https://newbedev.com/testing-javascript-alerts-with-jasmine
         spyOn(window, 'alert');
+        displayCurrentPlayer();
         endGame('GAME OVER');
         expect(window.alert).toHaveBeenCalledWith('GAME OVER');
     });
