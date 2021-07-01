@@ -37,7 +37,7 @@ describe('findSpotForCol(x)', () => {
         expect(() => findSpotForCol(100)).toThrowError();
     });
 
-    afterEach(() => board.splice(0, board.length));
+    afterAll(makeBoard);
 });
 
 describe('placeInTable(y, x)', () => {
