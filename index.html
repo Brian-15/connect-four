@@ -2,6 +2,13 @@
 <head>
   <title>Connect 4</title>
   <link href="connect4.css" rel="stylesheet">
+
+  <!-- Google Font imports -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+
+  <!-- Jasmine test framework imports -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.3.0/jasmine.css">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.3.0/jasmine.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.3.0/jasmine-html.js"></script>
@@ -9,15 +16,14 @@
 </head>
 <body>
 
+<h1>CONNECT 4</h1>
+
 <div id="game">
   <table id="board"></table>
 </div>
 
 <script src="connect4.js"></script>
-
-<div>
-  <script type="text/javascript" src="connect4.test.js"></script>
-</div>
+<script type="text/javascript" src="connect4.test.js"></script>
 
 </body>
 </html>

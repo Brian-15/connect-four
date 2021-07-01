@@ -1,9 +1,42 @@
+/* body */
+body {
+  background-color: gold;
+}
+
+/* header */
+
+h1 {
+  text-align: center;
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 64px;
+  color: rgb(23, 23, 156);
+}
+
+/* game div */
+
+#game {
+  margin-bottom: 5em;
+}
+
 /* game board table */
+
+#board {
+  margin: auto;
+  padding: 1em;
+}
 
 #board td {
   width: 50px;
   height: 50px;
   border: solid 1px #666;
+}
+
+#board:nth-child(n + 1) {
+  background-color: rgb(23, 23, 156);
+}
+
+#column-top {
+  background-color: lightgoldenrodyellow;
 }
 
 /* pieces are div within game table cells: draw as colored circles */
@@ -25,7 +58,7 @@
 }
 
 .player2 {
-  background-color: blue;
+  background-color: yellow;
 }
 
 /* column-top is table row of clickable areas for each column */
@@ -37,3 +70,4 @@
 #column-top td:hover {
   background-color: gold;
 }
+

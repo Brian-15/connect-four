@@ -102,7 +102,9 @@ function handleClick(evt) {
 
   // check for win
   if (checkForWin()) {
-    return endGame(`Player ${currPlayer} won!`);
+    setTimeout(() => {
+      return endGame(`Player ${currPlayer} won!`);
+    }, 200);
   }
 
   // check for tie
