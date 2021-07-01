@@ -202,7 +202,8 @@ function setupMenu() {
 
 // delete all pieces from the board
 function emptyPieces() {
-  document.querySelectorAll('#board .piece').forEach(piece => piece.remove());
+  const pieces = document.querySelectorAll('#board .piece')
+  if (pieces.length > 0) pieces.forEach(piece => piece.remove());
   makeBoard();
 }
 
