@@ -12,6 +12,25 @@ h1 {
   color: rgb(23, 23, 156);
 }
 
+/* menu button */
+
+#menu {
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 50px;
+  height: 100px;
+  text-align: center;
+}
+
+#start {
+  margin: auto;
+  width: 10%;
+  color:rgb(23, 23, 156);
+}
+
+#start:hover {
+  color: red;
+}
+
 /* game div */
 
 #game {
@@ -70,4 +89,3 @@ h1 {
 #column-top td:hover {
   background-color: gold;
 }
-

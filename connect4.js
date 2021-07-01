@@ -78,13 +78,24 @@ function placeInTable(y, x) {
 /** endGame: announce game end */
 
 function endGame(msg) {
+  // stop handleClick
+  start = false;
+
+  // add start button again
+  setupMenu();
+
   // pop up alert message
   window.alert(msg);
+
+  // reset board
+  emptyPieces();
 }
 
 /** handleClick: handle click of column top to play piece */
 
 function handleClick(evt) {
+  if(!start) return;
+
   // get x from ID of clicked cell
   var x = +evt.target.id;
 
@@ -102,8 +113,11 @@ function handleClick(evt) {
 
   // check for win
   if (checkForWin()) {
+    // due to the timeout, currPlayer will have switched already
+    // hence, the current player will be stored before that happens
+    const player = currPlayer;
     setTimeout(() => {
-      return endGame(`Player ${currPlayer} won!`);
+      return endGame(`Player ${player} won!`);
     }, 200);
   }
 
@@ -156,6 +170,30 @@ function checkForWin() {
     }
   }
 }
+
+let start = false;
+
+function setupMenu() {
+  const startButton = document.createElement('div');
+  
+  //startButton.type = 'button';
+  startButton.innerText = 'START';
+  startButton.id = 'start';
+
+  startButton.addEventListener('click', (evt) => {
+    start = true;
+    evt.target.remove();
+  });
+
+  document.getElementById('menu').appendChild(startButton);
+}
+
+// delete all pieces from the board
+function emptyPieces() {
+  document.querySelectorAll('.piece').forEach(piece => piece.remove());
+  makeBoard();
+}
+
 
 makeBoard();
 makeHtmlBoard();
