@@ -78,8 +78,6 @@ function placeInTable(y, x) {
 /** endGame: announce game end */
 
 function endGame(msg) {
-  // stop handleClick
-  start = false;
 
   // add start button again
   setupMenu();
@@ -118,6 +116,8 @@ function handleClick(evt) {
 
   // check for win
   if (checkForWin()) {
+    // stop handleClick before timeout
+    start = false;
     // due to the timeout, currPlayer will have switched already
     // hence, the current player will be stored before that happens
     const player = currPlayer;
@@ -127,6 +127,8 @@ function handleClick(evt) {
   // check for tie
   // check if all cells in board are filled; if so call, call endGame
   if (checkForTie()) {
+    // stop handleClick before timeout
+    start = false;
     setTimeout(() => endGame('Tie. No players win.'), 200);
   }
 
