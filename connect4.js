@@ -121,15 +121,13 @@ function handleClick(evt) {
     // due to the timeout, currPlayer will have switched already
     // hence, the current player will be stored before that happens
     const player = currPlayer;
-    setTimeout(() => {
-      return endGame(`Player ${player} won!`);
-    }, 200);
+    setTimeout(() => endGame(`Player ${player} won!`), 200);
   }
 
   // check for tie
   // check if all cells in board are filled; if so call, call endGame
   if (checkForTie()) {
-    return endGame('Tie. No players win.');
+    setTimeout(() => endGame('Tie. No players win.'), 200);
   }
 
   // switch players
