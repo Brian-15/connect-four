@@ -122,6 +122,7 @@ function handleClick(evt) {
     // hence, the current player will be stored before that happens
     const player = currPlayer;
     setTimeout(() => endGame(`Player ${player} won!`), 200);
+    return;
   }
 
   // check for tie
@@ -130,6 +131,7 @@ function handleClick(evt) {
     // stop handleClick before timeout
     start = false;
     setTimeout(() => endGame('Tie. No players win.'), 200);
+    return;
   }
 
   // switch players

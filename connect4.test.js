@@ -17,7 +17,7 @@ describe('makeBoard()', () => {
 // });
 
 describe('findSpotForCol(x)', () => {
-
+    
     beforeEach(makeBoard);
 
     it('should return top empty y coordinate given column x', () => {
